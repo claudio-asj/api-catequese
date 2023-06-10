@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -20,6 +21,14 @@ public class CatequizandoService {
         catequizando.setTelefone(dto.getTelefone());
         catequizandoRepository.save(catequizando);
         return new CatequizandoDto(catequizando);
+    }
+
+    public List<Catequizando> catequizandos(){
+        return catequizandoRepository.findAll();
+    }
+
+    public Optional<Catequizando> getCatequizando(Long id){
+        return catequizandoRepository.findById(id);
     }
 
 }
